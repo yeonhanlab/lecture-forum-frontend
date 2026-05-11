@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { IoChatbubbles, IoMoon } from "react-icons/io5";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import Button from "../common/Button/Button.tsx";
 
 const HeaderContainer = styled.header`
