@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { IoChatbubbles, IoMoon } from "react-icons/io5";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const HeaderContainer = styled.header`
     height: 64px;
@@ -79,6 +79,7 @@ const TextButton = styled.button`
 `;
 
 function MainHeader() {
+    const navigate = useNavigate();
     return (
         <HeaderContainer>
             <HeaderInner>
