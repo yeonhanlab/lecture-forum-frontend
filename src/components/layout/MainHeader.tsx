@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IoChatbubbles, IoMoon } from "react-icons/io5";
+import { IoChatbubbles, IoMoon, IoSunny } from "react-icons/io5";
 import { Link } from "react-router";
 import Button from "../common/Button/Button.tsx";
 
@@ -50,8 +50,8 @@ function MainHeader() {
                     <span>토론대난투</span>
                 </Logo>
                 <NavGroup>
-                    <Button color={"primary"} variant={"icon"} onClick={() => console.log("테마변경")}>
-                        <IoMoon size={20} />
+                    <Button color={"primary"} variant={"icon"} onClick={onChangeTheme}>
+                        {theme === "light" ? <IoSunny size={20} /> : <IoMoon size={20} />}
                     </Button>
                     <Button color={"primary"} variant={"text"} as={Link} to={"/auth/signin"}>
                         로그인
