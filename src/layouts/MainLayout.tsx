@@ -2,8 +2,6 @@ import { Outlet } from "react-router";
 import styled from "styled-components";
 import MainHeader from "../components/layout/MainHeader.tsx";
 import MainFooter from "../components/layout/MainFooter.tsx";
-import { ThemeContext } from "../contexts/theme/ThemeContext.ts";
-import { useContext } from "react";
 
 const LayoutWrapper = styled.div`
     display: flex;
@@ -21,7 +19,6 @@ const MainContainer = styled.main`
 `;
 
 function MainLayout() {
-    const { theme, onChangeTheme } = useContext(ThemeContext);  // 구조분해할당
     return (
         <LayoutWrapper>
             <MainHeader />

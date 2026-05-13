@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { IoChatbubbles, IoMoon, IoSunny } from "react-icons/io5";
 import { Link } from "react-router";
 import Button from "../common/Button/Button.tsx";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/theme/ThemeContext.ts";
 
 const HeaderContainer = styled.header`
     height: 64px;
@@ -38,10 +40,8 @@ const NavGroup = styled.nav`
     gap: 16px;
 `;
 
-
-
 function MainHeader() {
-
+    const { theme, onChangeTheme } = useContext(ThemeContext);
     return (
         <HeaderContainer>
             <HeaderInner>

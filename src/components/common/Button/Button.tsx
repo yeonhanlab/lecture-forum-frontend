@@ -7,16 +7,16 @@ const StyledButton = styled.button<{ $color: ButtonColorType; $variant: ButtonVa
     font-size: 14px;
     font-weight: 600;
     color: ${props => (props.$variant === "contained" ? "#ffffff" : "inherit")};
-    background-color: ${props => 
+    background-color: ${props =>
         props.$variant === "contained" ? props.theme.colors[props.$color] : "transparent"};
-    padding: ${props => props.$variant === "icon" ? "8px" : "8px 16px"};
+    padding: ${props => (props.$variant === "icon" ? "8px" : "8px 12px")};
     border-radius: ${props => (props.$variant === "icon" ? "50%" : "6px")};
     transition: all 0.5s;
 
     &:hover {
         filter: brightness(0.8);
-        background-color: ${props => 
-            props.$variant === "contained"? undefined : props.theme.colors.background.default};
+        background-color: ${props =>
+            props.$variant === "contained" ? undefined : props.theme.colors.background.default};
     }
 `;
 
@@ -25,13 +25,13 @@ const StyledButton = styled.button<{ $color: ButtonColorType; $variant: ButtonVa
 // button 태그의 타입 : ButtonHTMLAttributes<HTMLButtonElement>
 
 // 즉, 우리가 만든 Button 컴포넌트는 button의 확장판이다
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement>{
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
     color: ButtonColorType;
     variant: ButtonVariantType;
-    as?: ElementType,
+    as?: ElementType;
     to?: string;
-};
+}
 
 function Button({ children, color, variant, ...props }: Props) {
     return (
