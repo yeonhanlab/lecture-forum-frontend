@@ -1,4 +1,4 @@
-import z, { refine } from 'zod';
+import z from 'zod';
 import { Gender } from "../../types/user.type.ts";
 
 const phoneRegex = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/;

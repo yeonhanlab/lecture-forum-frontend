@@ -3,7 +3,8 @@ import type { ButtonHTMLAttributes, ElementType, ReactNode } from "react";
 
 export type ButtonColorType = "primary" | "secondary" | "success" | "error" | "warning" | "info";
 export type ButtonVariantType = "contained" | "text" | "icon";
-const StyledButton = styled.button<{ $color: ButtonColorType; $variant: ButtonVariantType }>`
+const StyledButton = styled.button<{ $color: ButtonColorType; $variant: ButtonVariantType; $fullWidth?: boolean }>`
+    width: ${props => props.$fullWidth ? "100%" : "auto"};
     font-size: 14px;
     font-weight: 600;
     color: ${props => (props.$variant === "contained" ? "#ffffff" : "inherit")};
@@ -29,13 +30,14 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
     color: ButtonColorType;
     variant: ButtonVariantType;
+    fullWidth?: boolean;
     as?: ElementType;
     to?: string;
 }
 
-function Button({ children, color, variant, ...props }: Props) {
+function Button({ children, color, variant, fullWidth, ...props }: Props) {
     return (
-        <StyledButton $color={color} $variant={variant} {...(props as any)}>
+        <StyledButton $color={color} $variant={variant} $fullWidth={fullWidth} {...(props as any)}>
             {children}
         </StyledButton>
     );
