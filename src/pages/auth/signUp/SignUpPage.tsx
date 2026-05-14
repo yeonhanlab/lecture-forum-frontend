@@ -44,7 +44,6 @@ function SignUpPage() {
     // errors는 각 항목에 대한 에러만 관리하는게 아니라 대표 errors 항목인 "root"라는 항목도 있음
     const onSubmit = async (data: SignUpInputType) => {
         try {
-            
             // 전송에 대한 내용응ㄹ 기재하면 되는데, 그대로 데이터를 전달할 것인가?
             // 프론트엔드에서'만' 필요한 passwordConfirm 항목이 추가되었음. 그러니 얘를 빼고 백엔드에 전달해줘야함
             const { passwordConfirm, ...submitData } = data;
@@ -52,7 +51,7 @@ function SignUpPage() {
             // 이렇게 만들어진 data를 submitData를 백엔드에게 전송 => fetch를 해준다? => 비동기 함수네! => async-await => try-catch
             // fetch(주소, 옵션); => 주소는 필수값, 옵션은 선택값
             // 옵션 객체 { method, header, body }
-           const response = await fetch("http://loccalhost:8000/user/create", {
+           const response = await fetch("http://localhost:8000/user/create", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -60,12 +59,14 @@ function SignUpPage() {
                 body: JSON.stringify(submitData), // 객체를 그대로 보낼 수 없고, JSON.stringify()를 통해 JSON형식의 string으로 변환
             });
 
-           // response도 http 메세지 내용이 기록되기 때문에 string을 JSON으로 파싱(변환)해야 함
+            // response도 http 메세지 내용이 기록되기 때문에 string을 JSON으로 파싱(변환)해야 함
+            // response = { ok: boolean, message: string }
+            // response.json()를 하게 되면 백엔드에서 응답한 내용인 response.message를 JSON으로 파싱
             const result = await response.json();
 
            // result.ok 프로퍼티 안에 response 상태 코드가 200번대라면 true, 아니라면 false
             // throw 키워드는 예외를 발생시켜 catch로 내가 임의적으로 보내는 것
-           if (!result.ok) {
+           if (!response.ok) {
                throw new Error(result.message || "회원가입 중 오류가 발생했습니다.")
            }
 
@@ -135,6 +136,18 @@ function SignUpPage() {
                         />
                         {errors.passwordConfirm && (
                             <ErrorMessage>{errors.passwordConfirm.message}</ErrorMessage>
+                        )}
+                    </InputGroup>
+                    <InputGroup>
+                        <Label htmlFor={"name"}>이름</Label>
+                        <Input
+                            {...register("name")}
+                            $hasError={!!errors.name}
+                            id={"name"}
+                            placeholder={"이름을 입력해주세요."}
+                        />
+                        {errors.name && (
+                            <ErrorMessage>{errors.name.message}</ErrorMessage>
                         )}
                     </InputGroup>
                     <InputGroup>
