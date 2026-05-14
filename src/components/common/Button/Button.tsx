@@ -10,7 +10,7 @@ const StyledButton = styled.button<{ $color: ButtonColorType; $variant: ButtonVa
     color: ${props => (props.$variant === "contained" ? "#ffffff" : "inherit")};
     background-color: ${props =>
         props.$variant === "contained" ? props.theme.colors[props.$color] : "transparent"};
-    padding: ${props => (props.$variant === "icon" ? "8px" : "8px 12px")};
+    padding: ${props => (props.$variant === "icon" ? "8px 8px 4px" : "8px 12px")};
     border-radius: ${props => (props.$variant === "icon" ? "50%" : "6px")};
     transition: all 0.5s;
 
