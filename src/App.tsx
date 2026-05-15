@@ -13,7 +13,7 @@ function App() {
     });
 
     const onChangeTheme = () => {
-        setTheme(prev => prev === "light" ? "dark" : "light"); //prev에는 원래 state에서 갖고있던 값이 들어감
+        setTheme(prev => prev === "light" ? "dark" : "light"); // prev에는 원래 state에서 갖고있던 값이 들어감
     }
 
 
